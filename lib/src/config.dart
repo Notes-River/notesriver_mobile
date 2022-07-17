@@ -1,3 +1,3 @@
 class Config {
-  static String serverAdress = 'http://192.168.2.108:3000';
+  static String serverAdress = 'http://notesriver.myportfolio.club';
 }
