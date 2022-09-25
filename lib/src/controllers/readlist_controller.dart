@@ -34,9 +34,13 @@ class ReadListController extends GetxController {
         path: file.value == 'N/A' ? null : file.value,
         tags: tags.isNotEmpty ? tags.value : null,
       );
+      titleController.text = "";
+      aboutController.text = "";
+      file.value = "N/A";
+      tags.clear();
       isLoading.value = false;
       uiWidgetController.shoeSnackBar(
-          context: context, widget: Text('Readlist created'));
+          context: context, widget: const Text('Readlist created'));
     } on HttpException catch (e) {
       isLoading.value = false;
       uiWidgetController.shoeSnackBar(

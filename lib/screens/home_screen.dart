@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           Badge(
-            animationDuration: Duration(milliseconds: 300),
+            animationDuration: const Duration(milliseconds: 300),
             animationType: BadgeAnimationType.slide,
             position: BadgePosition.topEnd(top: 2, end: 2),
             badgeColor: Colors.red,
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: BadgeShape.circle,
             badgeContent: Text(
               10.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 10),
@@ -100,9 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             : _homeController.isError.isTrue
                 ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Container(
                           alignment: Alignment.center,
                           child: Text(

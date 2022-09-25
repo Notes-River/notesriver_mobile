@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,11 +21,11 @@ class StylishReadlist extends StatelessWidget {
           color: Colors.white,
           border: Border.symmetric(
               horizontal: BorderSide(color: Colors.indigo.shade50))),
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.all(5),
+            margin: const EdgeInsets.all(5),
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,19 +33,45 @@ class StylishReadlist extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.indigo.shade600,
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.indigo.shade50,
+                        borderRadius: BorderRadius.circular(25),
+                        border: Border.all(
+                          color: Colors.indigo.shade600,
+                          width: 3,
+                          style: BorderStyle.solid,
+                        ),
+                      ),
                       child: readList.logo == 'N/A'
                           ? const CircleAvatar(
                               radius: 20,
                               child: FaIcon(FontAwesomeIcons.listAlt),
                             )
-                          : CircleAvatar(
-                              radius: 20,
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(29),
                               child: Image.network(
-                                  Config.serverAdress + '/' + readList.logo,
-                                  fit: BoxFit.contain),
+                                Config.serverAdress + '/' + readList.logo,
+                                fit: BoxFit.cover,
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return Center(
+                                    child: CircularProgressIndicator(
+                                      value:
+                                          loadingProgress.expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
+                                              : null,
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                     ),
                     Padding(
@@ -56,7 +84,7 @@ class StylishReadlist extends StatelessWidget {
                             readList.title,
                             style: GoogleFonts.firaSans(
                               color: Colors.indigo.shade600,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w400,
                               fontSize: 15,
                             ),
                           ),
@@ -81,7 +109,7 @@ class StylishReadlist extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            padding: EdgeInsets.only(right: 7),
+                            padding: const EdgeInsets.only(right: 7),
                             alignment: Alignment.center,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +158,7 @@ class StylishReadlist extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 7),
+                            padding: const EdgeInsets.only(left: 7),
                             alignment: Alignment.center,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

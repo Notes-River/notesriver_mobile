@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: Navigator.canPop(context) == true
-              ? StylishPagePopper()
+              ? const StylishPagePopper()
               : Container(),
         ),
         resizeToAvoidBottomInset: false,

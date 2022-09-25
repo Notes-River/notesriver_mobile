@@ -27,7 +27,7 @@ class StylishDrawer extends StatelessWidget {
               color: Colors.indigo.shade600,
               child: DrawerHeader(
                 child: Container(
-                  padding: EdgeInsets.only(left: 5, bottom: 5),
+                  padding: const EdgeInsets.only(left: 5, bottom: 5),
                   alignment: Alignment.bottomLeft,
                   child: Text(
                     storageController.profile.value.name,
@@ -119,7 +119,7 @@ class StylishDrawer extends StatelessWidget {
                 color: Colors.indigo.shade600,
               ),
               title: Text(
-                'Favorite',
+                'Favorite Notes',
                 style: GoogleFonts.firaSans(
                   color: Colors.indigo.shade600,
                   fontSize: 18,

@@ -59,7 +59,7 @@ class GenReadListScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
               child: TextField(
                 controller: crlController.titleController,
                 enabled: !crlController.isLoading.value,
@@ -113,9 +113,13 @@ class GenReadListScreen extends StatelessWidget {
                             : Container(
                                 height: 40,
                                 width: 40,
-                                alignment: Alignment.center,
-                                child: Image.file(
-                                  File(crlController.file.value),
+                                // alignment: Alignment.center,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.file(
+                                    File(crlController.file.value),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                         Padding(
@@ -145,16 +149,21 @@ class GenReadListScreen extends StatelessWidget {
                                         );
                                       }
                                     },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                        color: Colors.indigo.shade600,
-                                      ),
-                                      child: const FaIcon(
-                                        FontAwesomeIcons.trashAlt,
-                                        color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 4, horizontal: 4),
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            color: Colors.indigo.shade600,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: const FaIcon(
+                                          FontAwesomeIcons.trashAlt,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   )
@@ -204,40 +213,37 @@ class GenReadListScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                      
                                       elevation: 1,
                                     ),
                                   );
                                 },
                               ),
                             ),
-                      
                     ],
                   ),
                 ),
               ),
             ),
-
-
             Container(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () async {
                     if (crlController.isLoading.isTrue) {
                       uiWidgetController.shoeSnackBar(
                           context: context,
-                          widget: Text('Already running please wait'));
+                          widget: const Text('Already running please wait'));
                     } else {
                       bool isValid = await crlController.validateFields(
                           context: context,
                           uiWidgetController: uiWidgetController);
                       if (isValid) {
-                        crlController.createReadList(
+                        await crlController.createReadList(
                           context: context,
                           uiWidgetController: uiWidgetController,
                         );
+                        Get.back();
                       }
                     }
                   },

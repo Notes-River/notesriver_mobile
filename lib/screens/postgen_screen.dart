@@ -21,7 +21,7 @@ class PostGenScreen extends StatelessWidget {
       return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          leading: StylishPagePopper(),
+          leading: const StylishPagePopper(),
           title: Text(
             'Upload Notes',
             style: GoogleFonts.firaSans(
@@ -34,7 +34,7 @@ class PostGenScreen extends StatelessWidget {
           children: [
             ncController.isError.isTrue
                 ? Padding(
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
@@ -72,7 +72,7 @@ class PostGenScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+              padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
               child: TextField(
                 enabled: !ncController.isLoading.value,
                 controller: ncController.titleController,
@@ -83,13 +83,14 @@ class PostGenScreen extends StatelessWidget {
                 ),
                 decoration: InputDecoration(
                   hintText: 'title of notes',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   focusColor: Colors.indigo.shade600,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 5, bottom: 0, left: 10, right: 10),
+              padding:
+                  const EdgeInsets.only(top: 5, bottom: 0, left: 10, right: 10),
               child: Card(
                 elevation: 0,
                 child: InkWell(
@@ -103,7 +104,7 @@ class PostGenScreen extends StatelessWidget {
                     if (files == null) {
                       uiWidgetController.shoeSnackBar(
                         context: context,
-                        widget: Text('Please select notes for upload'),
+                        widget: const Text('Please select notes for upload'),
                       );
                     } else {
                       ncController.setFilesValue(
@@ -115,7 +116,7 @@ class PostGenScreen extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     height: 50,
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -124,7 +125,7 @@ class PostGenScreen extends StatelessWidget {
                           color: Colors.indigo.shade600,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             ncController.files.isNotEmpty
                                 ? ncController.files.value.length.toString() +
@@ -147,7 +148,8 @@ class PostGenScreen extends StatelessWidget {
                                       } else {
                                         uiWidgetController.shoeSnackBar(
                                           context: context,
-                                          widget: Text('Process started '),
+                                          widget:
+                                              const Text('Process started '),
                                         );
                                       }
                                     },
@@ -174,7 +176,8 @@ class PostGenScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 0, bottom: 5, left: 10, right: 10),
+              padding:
+                  const EdgeInsets.only(top: 0, bottom: 5, left: 10, right: 10),
               child: Card(
                 elevation: 0,
                 child: InkWell(
@@ -207,7 +210,7 @@ class PostGenScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text('Okay'),
+                          child: const Text('Okay'),
                         )
                       ],
                     );
@@ -215,7 +218,7 @@ class PostGenScreen extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     height: 50,
-                    padding: EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -232,16 +235,21 @@ class PostGenScreen extends StatelessWidget {
                                 : Container(
                                     height: 40,
                                     width: 40,
-                                    alignment: Alignment.center,
-                                    child: Image.network(
-                                      Config.serverAdress +
-                                          '/' +
-                                          ncController.selectedRl.value.logo,
-                                      fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        Config.serverAdress +
+                                            '/' +
+                                            ncController.selectedRl.value.logo,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                         Padding(
-                          padding: EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             ncController.selectedRl.value.id == 'N/A'
                                 ? 'Select readlist'
@@ -263,7 +271,8 @@ class PostGenScreen extends StatelessWidget {
                                       } else {
                                         uiWidgetController.shoeSnackBar(
                                           context: context,
-                                          widget: Text('Process started '),
+                                          widget:
+                                              const Text('Process started '),
                                         );
                                       }
                                     },
@@ -301,7 +310,7 @@ class PostGenScreen extends StatelessWidget {
                     children: [
                       ncController.tags.value.isEmpty
                           ? Container(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 'your tags',
                                 style: GoogleFonts.firaSans(
@@ -340,13 +349,14 @@ class PostGenScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () {
                     if (ncController.isLoading.isTrue) {
                       uiWidgetController.shoeSnackBar(
                         context: context,
-                        widget: Text('Process already running please wait'),
+                        widget:
+                            const Text('Process already running please wait'),
                       );
                     } else {
                       FocusManager.instance.primaryFocus?.unfocus();
@@ -355,6 +365,7 @@ class PostGenScreen extends StatelessWidget {
                           context: context,
                           widget: const Text('Your Notes uploaded'),
                         );
+                        Get.back();
                       });
                     }
                   },
@@ -366,7 +377,7 @@ class PostGenScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.indigo.shade500),
                     child: ncController.isLoading.isTrue
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         : Text(
                             'Upload',
                             style: GoogleFonts.firaSans(

@@ -54,13 +54,13 @@ class NotesCreateController extends GetxController {
           files: files.value,
           id: selectedRl.value.id,
         );
+        emptyFilesValue();
+        emptySelectedRl();
+        tags.value = [];
+        titleController.text = '';
+        aboutController.text = '';
+        cb();
       }
-      emptyFilesValue();
-      emptySelectedRl();
-      tags.value = [];
-      titleController.text = '';
-      aboutController.text = '';
-      cb();
       isLoading.value = false;
     } on HttpException catch (e) {
       showError(error: e.message);

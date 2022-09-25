@@ -9,6 +9,7 @@ import 'package:notesriver_mobile/screens/login_screen.dart';
 import 'package:notesriver_mobile/screens/pdf_view.dart';
 import 'package:notesriver_mobile/screens/postgen_screen.dart';
 import 'package:notesriver_mobile/screens/profile_screen.dart';
+import 'package:notesriver_mobile/screens/readlist_info.dart';
 import 'package:notesriver_mobile/screens/readlist_screen.dart';
 import 'package:notesriver_mobile/screens/signup_screen.dart';
 import 'package:notesriver_mobile/screens/splash_screen.dart';
@@ -22,6 +23,7 @@ import 'package:notesriver_mobile/src/bindings/login_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/notes_create_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/pdf_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/profile_bindings.dart';
+import 'package:notesriver_mobile/src/bindings/readlistinfo_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/registration_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/verification_bindings.dart';
 
@@ -97,7 +99,12 @@ class MyApp extends StatelessWidget {
           name: '/gen-notes',
           page: () => PostGenScreen(),
           binding: NotesCreateBindings(),
-        )
+        ),
+        GetPage(
+          name: '/readlist-info',
+          page: () => ReadListInfo(),
+          binding: ReadlistInfoBindings(),
+        ),
       ],
       initialRoute: '/splash',
     );

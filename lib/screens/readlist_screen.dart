@@ -89,7 +89,7 @@ class _ReadListScreenState extends State<ReadListScreen> {
                             ),
                           )
                           .toList(),
-                    if (rc.readLists.value.length == 0)
+                    if (rc.readLists.value.isEmpty)
                       Container(
                         padding: EdgeInsets.only(
                             top: MediaQuery.of(context).size.height * 0.3),

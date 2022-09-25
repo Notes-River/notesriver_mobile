@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomThemes {
   static String appName = 'Notes River';
@@ -12,15 +15,12 @@ class CustomThemes {
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
     primaryColor: lightPrimary,
-    accentColor: lightAccent,
-    cursorColor: lightAccent,
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       elevation: 0,
       color: lightPrimary,
       titleTextStyle: const TextStyle(
           color: Color(0xff416d6d), fontSize: 20, fontWeight: FontWeight.bold),
-      textTheme: TextTheme(),
     ),
   );
 
@@ -36,7 +36,9 @@ class CustomThemes {
       titleTextStyle: const TextStyle(
           color: Colors.white70, fontSize: 20, fontWeight: FontWeight.bold),
       // ignore: prefer_const_constructors
-      textTheme: TextTheme(),
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light
+      )
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: darkAccent),
     textSelectionTheme: TextSelectionThemeData(cursorColor: darkAccent),

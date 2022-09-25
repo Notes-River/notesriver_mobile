@@ -84,17 +84,33 @@ class _NotesItemState extends State<NotesItem> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.indigo.shade600,
-                      child: CircleAvatar(
-                        radius: 20,
+                    InkWell(
+                      onTap: () {
+                        Get.toNamed('/readlist-info');
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(
+                            color: Colors.indigo.shade600,
+                            width: 2,
+                          ),
+                        ),
                         child: widget.notesModel.readList.logo == 'N/A'
-                            ? Image.asset('assets/notes_river.png')
-                            : Image(
-                                image: NetworkImage(Config.serverAdress +
-                                    '/' +
-                                    widget.notesModel.readList.logo),
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.asset('assets/notes_river.png'),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  Config.serverAdress +
+                                      '/' +
+                                      widget.notesModel.readList.logo,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                       ),
                     ),
@@ -219,13 +235,14 @@ class _NotesItemState extends State<NotesItem> {
                                 ..onTap = () {
                                   showMoreAndLess();
                                 })
-                      : TextSpan(text: ''),
+                      : const TextSpan(text: ''),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+            padding:
+                const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
             child: NotesFilesList(
               token: widget.storageController.token.value,
               readList: widget.notesModel.readList,
@@ -309,7 +326,7 @@ class _NotesItemState extends State<NotesItem> {
               ? SizedBox(
                   height: 20,
                   child: Container(
-                    padding: EdgeInsets.only(left: 5),
+                    padding: const EdgeInsets.only(left: 5),
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Liked by you' +
@@ -325,7 +342,6 @@ class _NotesItemState extends State<NotesItem> {
                   ),
                 )
               : Container(),
-          Divider()
         ],
       ),
     );
