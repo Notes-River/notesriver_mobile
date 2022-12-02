@@ -9,7 +9,6 @@ import 'package:notesriver_mobile/constrance/ThemeData.dart';
 import 'package:notesriver_mobile/src/controllers/readlist_controller.dart';
 import 'package:notesriver_mobile/src/controllers/ui_widget_controller.dart';
 import 'package:notesriver_mobile/widget/stylistpage_poper.dart';
-import 'package:notesriver_mobile/widget/tags_search.dart';
 
 class GenReadListScreen extends StatelessWidget {
   GenReadListScreen({Key? key}) : super(key: key);
@@ -20,6 +19,7 @@ class GenReadListScreen extends StatelessWidget {
     return GetX<ReadListController>(builder: (crlController) {
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: StylishPagePopper(),
           title: Text(
             'Create Readlist',

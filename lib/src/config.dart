@@ -1,3 +1,3 @@
 class Config {
-  static String serverAdress = 'http://192.168.176.159:3000';
+  static String serverAdress = 'https://api.notesriver.booringcodes.in';
 }

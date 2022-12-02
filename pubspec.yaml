@@ -44,6 +44,7 @@ dependencies:
   audioplayers: ^0.20.1
   path_provider: ^2.0.10
   syncfusion_flutter_pdfviewer: ^20.1.58-beta
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +59,23 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/notes_river.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/notes_river.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/notes_river.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/notes_river.png"
 # The following section is specific to Flutter.
 flutter:
 

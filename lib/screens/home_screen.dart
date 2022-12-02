@@ -10,7 +10,6 @@ import 'package:notesriver_mobile/widget/notes_items.dart';
 import 'package:notesriver_mobile/widget/stylishUploader.dart';
 import 'package:notesriver_mobile/widget/stylish_button.dart';
 import 'package:notesriver_mobile/widget/stylish_drawer.dart';
-import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -146,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   },
                                   itemCount: storageController.notes.length,
                                 )
-                              : ListView(
+                              : Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
                                       alignment: Alignment.center,

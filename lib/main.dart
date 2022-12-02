@@ -28,6 +28,7 @@ import 'package:notesriver_mobile/src/bindings/registration_bindings.dart';
 import 'package:notesriver_mobile/src/bindings/verification_bindings.dart';
 
 void main() {
+  
   runApp(const MyApp());
 }
 

@@ -21,6 +21,7 @@ class PostGenScreen extends StatelessWidget {
       return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: const StylishPagePopper(),
           title: Text(
             'Upload Notes',
